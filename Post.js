@@ -3,39 +3,75 @@
  * https://github.com/facebook/react-native
  * @flow
  */
+ var Platform = require('react-native').Platform;
+var ImagePicker = require('react-native-image-picker');
  import React, { Component } from 'react';
  import {AppRegistry,StyleSheet,Text,TouchableOpacity,Image,View,TextInput,flex,alignItems} from 'react-native';
  import CheckBox from 'react-native-checkbox';
- import * as firebase from 'firebase';
- // Initialize Firebase
 
- var config = {
-   apiKey: "AIzaSyDRybHsuh216_7FBWxq7ct_uuhaCvubZA4",
-   authDomain: "project-cd9fe.firebaseapp.com",
-   databaseURL: "https://project-cd9fe.firebaseio.com",
-   storageBucket: "project-cd9fe.appspot.com",
-   messagingSenderId: "1037253471787"
- };
- firebase.initializeApp(config);
+
+
 
  export default class project extends Component {
+   constructor(props) {
+    super(props);
+    this.state = {
+      image: null,
+    };
+    this.takePhoto = this.takePhoto.bind(this);
+    this.chooseImage = this.chooseImage.bind(this);
+    this.setImage = this.setImage.bind(this);
+  }
+
+setImage(response){
+   console.log('Response = ', response);
+
+   if (response.didCancel) {
+     console.log('User cancelled image picker');
+   }
+   else if (response.error) {
+     console.log('ImagePicker Error: ', response.error);
+   }
+   else if (response.customButton) {
+     console.log('User tapped custom button: ', response.customButton);
+   } else {
+     //If it is iOS, remove 'file://' prefix
+     let source = {uri: response.uri.replace('file://', ''), isStatic: true};
+
+     //If android, don't need to remove the 'file://'' prefix
+     if (Platform.OS === 'android') {
+       source = {uri: response.uri, isStatic: true};
+     }
+     this.setState({image: source});
+   }
+ }
+
+
+takePhoto(){
+  ImagePicker.launchCamera({noData: true }, this.setImage);
+}
+
+chooseImage(){
+  ImagePicker.launchImageLibrary({noData: true }, this.setImage);
+}
+
    render() {
      return (
        <View style={styles.container}>
         <View style={styles.head}>
-          <Image style={{flex:1,width:250,height:170}} source={require('./photoplus.png')}/>
+          <Image style={{flex:1,width:250,height:170}} source={this.state.image}/>
         </View>
 
 
         <View style={styles.group}>
           <View style={styles.mid}>
             <View style={styles.group}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity onPress={()=>{this.chooseImage()}} style={styles.button}>
               <Text style={styles.buttontext}> select photo </Text>
               </TouchableOpacity>
             </View>
             <View style={styles.group}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity onPress={()=>{this.takePhoto()}} style={styles.button}>
               <Text style={styles.buttontext}> take photo </Text>
               </TouchableOpacity>
             </View>
