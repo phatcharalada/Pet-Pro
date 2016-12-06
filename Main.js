@@ -15,27 +15,31 @@ import {
   View,
   ScrollView,
   Navigator,
+  Image,
 } from 'react-native';
 
 export default class Main extends Component {
   render() {
     return (
       <View style={styles.container}>
+
+
       <ScrollView>
 
         <View style={styles.head}>
           <Text style={styles.headname}>
-          Welcome to Pet
+          Welcome to Pet Pro
           </Text>
           </View>
 
           <View style={styles.head}>
           <Text style={styles.appname}>
-          สุนัขเป็นสิ่งเดียวในโลกที่รักคุณได้มากกว่าที่คุณรักตัวเอง Josh Billings นักเขียนชาวอเมริกัน
+           สัตว์เลี้ยงเป็นสิ่งเดียวในโลกที่รักคุณได้มากกว่าที่คุณรักตัวเอง Josh Billings นักเขียนชาวอเมริกัน
           </Text>
           </View>
 
           <View style={styles.footer}>
+          <Image style={{flex:1,width:320,height:320}}source={require('./maindog.png')}/>
           </View>
 
 
@@ -93,7 +97,9 @@ head:{
     color:'white',
   },
   footer:{
-    height:350,
+    height:320,
+    justifyContent:'center',
+    alignItems:'center',
   }
 
 });

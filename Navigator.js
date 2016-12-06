@@ -12,22 +12,22 @@
  import Main from './Main.js'
  import Login from './Login.js'
  import NewFeed from './NewFeed.js'
- //import View from './View.js'
+ import Scrollable from './Scrollable.js'
 const routes = [
   {
-    title: 'PET SOCIETY',
+    title: 'PET PRO',
     index: 0
   }, {
     title: 'Log in',
     index: 1
   }, {
-    title: 'Dog Information',
+    title: 'Pet Information',
     index: 2
   }, {
     title: 'Owner Information',
     index: 3
   }, {
-    title: '...',
+    title: 'PET PRO',
     index: 4
   },
 ];
@@ -50,7 +50,7 @@ class project extends Component {
                 case 1: return (<Login navigator={navigator} route={routes[route.index]}></Login>);
                 case 2: return (<DogInfo navigator={navigator} route={routes[route.index]}></DogInfo>);
                 case 3: return (<OwnerInfo navigator={navigator} route={routes[route.index]}></OwnerInfo>);
-                case 4: return (<NewFeed navigator={navigator} route={routes[route.index]}></NewFeed>);
+                case 4: return (<Scrollable navigator={navigator} route={routes[route.index]}></Scrollable>);
                 //case 5: return (<View navigator={navigator} route={routes[route.index]}></View>);
               }
             }
@@ -64,7 +64,7 @@ class project extends Component {
            <Navigator.NavigationBar
              routeMapper={{
                LeftButton: (route, navigator, index, navState) => {
-                 if (route.index == 0){
+                 if (route.index == 0 || route.index == 4){
                    return null;
                  }
                  return (

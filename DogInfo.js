@@ -13,6 +13,7 @@ import {
   View,
   ScrollView,
   TextInput,
+  Image,
 } from 'react-native';
 import CheckBox from 'react-native-checkbox';
 
@@ -23,7 +24,7 @@ export default class DogInfo extends Component {
 <ScrollView>
 
         <View style={styles.pic}>
-          <Text style={styles.title}> Picture </Text>
+          <Image style={{flex:1,width:200,height:200}} source={require('./doggicon.png')}/>
         </View>
 
         <View style={styles.group}>
@@ -74,14 +75,14 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     height:250,
     alignItems:'center',
-    borderWidth:1,
+
     borderRadius:20,
     paddingLeft:10,
     paddingRight:10
   },
   input:{
     padding:10,
-
+    borderRadius:20,
     height:40,
     borderWidth:1,
   },
@@ -96,9 +97,10 @@ const styles = StyleSheet.create({
   button:{
     justifyContent:'center',
     backgroundColor:'darkred',
-    borderWidth:1,
+
     alignItems:'center',
     height:40,
+    borderRadius: 20,
   },
   buttontext:{
     fontSize:16,

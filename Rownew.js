@@ -7,34 +7,50 @@ const styles = StyleSheet.create({
     padding: 12,
     flexDirection: 'column',
     alignItems: 'flex-start',
-    paddingTop:80,
+    //paddingTop:80,
   },
   text: {
-    marginLeft: 12,
-    fontSize: 16,
+    fontSize: 14,
   },
-
   pic:{
       justifyContent:'center',
       height:250,
       width: 350,
       alignItems:'center',
-      borderWidth:1,
-      borderRadius:20,
+      //borderWidth:1,
+      //borderRadius:20,
       paddingLeft:10,
       paddingRight:10
+    },
+    group:{
+      flexDirection:'row',
+      height:50,
+    },
+    head:{
+      padding:10,
+
+      justifyContent:'center',
     },
 });
 
 const Row = (props) => (
   <View style={styles.container}>
 
-    <Text style={styles.text}>
-    555555 //ใช้ดาต้าเบส เจสัน
-    </Text>
+  <View style={styles.group}>
+      <View style={styles.head}>
+        <Image  style={{width:30,height:30}} source={require('./iconkon.png')}/>
+        </View>
+        <View style={styles.head}>
+        <Text style={styles.text}> Username </Text>
+        </View>
+  </View>
+
     <View style={styles.pic}>
-      <Text style={styles.text}> Picture </Text>
+      <Image  style={{width:350,height:250}} source={require('./show.jpg')}/>
     </View>
+    <Text style={styles.text}> Username #caption </Text>
+
+
   </View>
 );
 

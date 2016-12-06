@@ -3,6 +3,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   TouchableOpacity,
   View,
   TextInput,
@@ -17,17 +18,22 @@ export default class project extends Component {
       <View style={styles.container}>
 <ScrollView>
         <View style={styles.pic}>
-          <Text style={styles.title}> Picture </Text>
+          <Image style={{flex:1,width:200,height:200}} source={require('./person.png')}/>
         </View>
 
         <View style={styles.group}>
-          <Text style={styles.title}> Name </Text>
-          <TextInput style={styles.input} keyboardType='default' placeholder='Please enter your name'/>
+          <Text style={styles.title}> Username </Text>
+          <TextInput style={styles.input} keyboardType='default' placeholder='Please create username'/>
         </View>
 
         <View style={styles.group}>
-          <Text style={styles.title}> Sex </Text>
-          <TextInput style={styles.input}  keyboardType='default' placeholder='Please enter your sex'/>
+          <Text style={styles.title}> Password </Text>
+          <TextInput style={styles.input}  keyboardType='default' secureTextEntry={true} placeholder='Please enter password'/>
+        </View>
+
+        <View style={styles.group}>
+          <Text style={styles.title}> Confirm password </Text>
+          <TextInput style={styles.input}  keyboardType='default' secureTextEntry={true} placeholder='Please enter password again'/>
         </View>
 
         <View style={styles.group}>
@@ -40,10 +46,6 @@ export default class project extends Component {
           <TextInput style={styles.input} keyboardType='numeric' placeholder='Please enter your phone number'/>
         </View>
 
-        <View style={styles.group}>
-          <Text style={styles.title}> Date of Birth </Text>
-          <TextInput style={styles.input}  keyboardType='default' placeholder='Please enter your birthday'/>
-        </View>
 
         <View style={styles.group}>
           <TouchableOpacity style={styles.button} onPress={()=>this.props.navigator.push({index: 1})}>
@@ -69,14 +71,14 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     height:250,
     alignItems:'center',
-    borderWidth:1,
+
     borderRadius:20,
     paddingLeft:10,
     paddingRight:10
   },
   input:{
     padding:10,
-
+    borderRadius:20,
     height:40,
     borderWidth:1,
   },
@@ -87,14 +89,15 @@ const styles = StyleSheet.create({
     marginTop:10,
     paddingLeft:10,
     paddingRight:10,
+
   },
   button:{
     backgroundColor:'darkred',
-    borderWidth:1,
+
     alignItems:'center',
     height:40,
     justifyContent:'center',
-
+    borderRadius: 20
   },
   buttontext:{
     fontSize:16,

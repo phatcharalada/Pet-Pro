@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#C1C1C1',
-    paddingTop:80,
+    
   },
   input: {
     height: 30,

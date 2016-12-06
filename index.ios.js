@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
- import a from './Navigator.js'
+ import a from './index.js'
 
 //
 // import React, { Component } from 'react';
@@ -93,7 +93,7 @@
 //     color:'white',
 //   },
 //   footer:{
-//     height:350,
+//     height:320,
 //   }
 //
 // });

@@ -21,9 +21,11 @@ const styles = StyleSheet.create({
 
 const Row = (props) => (
   <View style={styles.container}>
-
+    <View style={styles.head}>
+    <Image  style={{width:30,height:30}} source={require('./iconkon.png')}/>
+    </View>
     <Text style={styles.text}>
-    555555 //ใช้ดาต้าเบส เจสัน
+    Username
     </Text>
   </View>
 );
